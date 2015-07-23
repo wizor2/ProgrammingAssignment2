@@ -10,21 +10,21 @@
 ##      nMatr   - new matrix
 
 makeCacheMatrix <- function(oMatr = matrix()) {
-        ## initialization of cache matrix (mCache) to NULL
+        ## initialization of cache matrix (mCache)
         mCache = NULL
         
         ## definition of mSet function in working environment 
         mSet <- function(nMatr) {
                 ## assign a value to matrix from different environment
                 oMatr <<- nMatr
-                ## new matrix do not have inverse matrix calculated yet (mCache = NULL)
+                ## new matrix do not have inverse matrix calculated yet
                 mCache <<- NULL
         }
         
         ## mGet function returns actual matrix
         mGet <- function() oMatr
         
-        ## mInvSet function allows you to setup inverse matrix manually
+        ## mInvSet function allows you to set inverse matrix manually
         mInvSet <- function(mInv) mCache <<- mInv
         
         ## mInvGet function returns actual inverse matrix
@@ -35,7 +35,9 @@ makeCacheMatrix <- function(oMatr = matrix()) {
 
 
 ## Fuction "cacheSolve" check if there is no inverse matrix already assigned
-## in the cache and if not calculate inverse matrix from martix in cache.
+## in the cache and if not calculate inverse matrix from martix in working
+## environment.
+##
 ## Used variables are:
 ##      oMatr   - original matrix
 ##      mCache  - cached inverse matrix
